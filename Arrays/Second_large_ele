@@ -46,7 +46,7 @@ Solution :
         # two elements
     if (arr_size < 2):
      
-        print(" Invalid Input ")
+        print(" -1 ")
         return
      
  
