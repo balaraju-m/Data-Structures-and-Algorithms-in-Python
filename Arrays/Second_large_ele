@@ -1,0 +1,76 @@
+
+Given an array Arr of size N, print second largest distinct element from an array.
+
+Example 1:
+
+Input: 
+N = 6
+Arr[] = {12, 35, 1, 10, 34, 1}
+Output: 34
+Explanation: The largest element of the 
+array is 35 and the second largest element
+is 34.
+
+Note :  If 2nd largest element doesn't exist then return -1.
+
+
+Solution :
+
+    1. Naive approach:
+
+          The idea is to sort the array in descending order and then return the second element which is not equal to the largest element from the sorted array.
+          
+                                                    Complexity Analysis:
+
+                                                                  Time Complexity: O(n log n). 
+                                                                              The time required to sort the array is O(n log n).
+                                                                              
+                                                                  Auxiliary space: O(1). 
+                                                                                As no extra space is required.
+          
+    2. Efficient approach :
+    
+                      Time Complexity: O(n). 
+                          Only one traversal of the array is needed.
+                          
+                      Auxiliary space: O(1). 
+                            As no extra space is required.
+  
+  
+  source code :
+  
+  
+  def print2largest(arr, arr_size):
+ 
+    # There should be atleast
+        # two elements
+    if (arr_size < 2):
+     
+        print(" Invalid Input ")
+        return
+     
+ 
+    first = second = -2147483648
+    for i in range(arr_size):
+     
+        # If current element is
+                # smaller than first
+        # then update both
+                # first and second
+        if (arr[i] > first):
+         
+            second = first
+            first = arr[i]
+         
+ 
+        # If arr[i] is in
+                # between first and
+        # second then update second
+        elif (arr[i] > second and arr[i] != first):
+            second = arr[i]
+     
+    if (second == -2147483648):
+        print("There is no second largest element")
+    else:
+        print("The second largest element is", second)
+ 
