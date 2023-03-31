@@ -1,0 +1,47 @@
+Given an array of size n, write a program to check if it is sorted in ascending order or not. Equal values are allowed in an array and two consecutive equal values are considered sorted.
+
+Examples: 
+
+Input : 20 21 45 89 89 90
+Output : Yes
+
+Input : 20 20 45 89 89 90
+Output : Yes
+
+Input : 20 20 78 98 99 97
+Output : No
+
+
+Approach 1: Recursive approach
+
+      Time Complexity: O(n) 
+      Auxiliary Space: O(n) for Recursion Call Stack.
+      
+      
+      Source code :
+      
+def arraySortedOrNot(arr):
+ 
+    # Calculating length
+    n = len(arr)
+ 
+    # Array has one or no element or the
+    # rest are already checked and approved.
+    if n == 1 or n == 0:
+        return True
+ 
+    # Recursion applied till last element
+    return arr[0] <= arr[1] and arraySortedOrNot(arr[1:])
+ 
+ 
+arr = [20, 23, 23, 45, 78, 88]
+ 
+# Displaying result
+if arraySortedOrNot(arr):
+    print("Yes")
+else:
+    print("No")
+    
+    
+    
+
