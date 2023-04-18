@@ -1,0 +1,54 @@
+Given a set of N jobs where each jobi has a deadline and profit associated with it. Each job takes 1 unit of time to complete and only one job can be scheduled at a time. We earn the profit if and only if the job is completed by its deadline. The task is to find the number of jobs done and the maximum profit.
+
+Note: Jobs will be given in the form (Jobid, Deadline, Profit) associated with that Job.
+Example 1:
+
+Input:
+N = 4
+Jobs = {(1,4,20),(2,1,10),(3,1,40),(4,1,30)}
+Output:
+2 60
+
+Approach :
+
+      Here , I have used greedy technique .Time Complexity : nlogn
+      
+      
+Source Code :
+
+ def JobScheduling(self,Jobs,n):
+        
+        # code here
+        list1=[]
+        no_jobs =0
+        max_profit=0
+        
+      
+        maxi=0    
+        for job in Jobs:
+            #dd.append(job.id)
+            list1.append([job.deadline,job.profit])
+            maxi=max(maxi,job.deadline)
+            
+        list1.sort(key = lambda x :x[1] , reverse=True)
+        
+        #Jobs.sort(key=lambda x: (-x.profit,x.deadline))
+        
+        
+        job_done=[False]*maxi
+        
+        for job in list1:
+            
+            d=job[0]
+            d-=1
+            for j in range(d,-1,-1):
+                
+                if job_done[j]!=True:
+                    
+                    job_done[j] = True
+                    max_profit += job[1]
+                    
+                    no_jobs+=1
+                    break
+        
+        return [no_jobs,max_profit]
